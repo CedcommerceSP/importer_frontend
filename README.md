@@ -9,3 +9,6 @@
 
 ### Start mock server
     run -> json-server --watch server/db.json --host [your-ip] --port 4500
+    
+    username-client-store-shop
+    password-2#:FA&n%
