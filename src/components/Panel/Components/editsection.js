@@ -18,6 +18,7 @@ import {
   DataTable,
   Button,
   Icon,
+  Modal,
   DropZone,
   Thumbnail,
 } from "@shopify/polaris";
@@ -47,6 +48,8 @@ export class Editsection extends Component {
       rows: [],
       type:"",
       variants: [],
+      openVariantDetail: false,
+      variantArrayDetails: [],
       created_at:"",
       variant_attribute:[],
       product_additionalimage_url:"",
@@ -184,7 +187,14 @@ if(newstr!= "" && newstr !== null){
     Object.keys(variant).forEach((e) => {
       let statechecksku = variant[e]["sku"] + variant[e]["source_variant_id"];
       rows.push([
-        <span style={{ cursor: "pointer" }}>
+        <span style={{ cursor: "pointer" }}
+        onClick={() => {
+            this.setState({
+              openVariantDetail: true,
+              variantArrayDetails: variant[e],
+            });
+          }}
+        >
           <Thumbnail source={variant[e]["main_image"]} alt={""} />
         </span>,
         <TextField
@@ -575,6 +585,45 @@ if(newstr!= "" && newstr !== null){
                     </div>
                   </Card>
                 </div>
+                <Modal
+          title={"Details"}
+          open={this.state.openVariantDetail}
+          onClose={() => {
+            this.setState({ openVariantDetail: false });
+          }}
+        >
+          <Modal.Section>
+            <div className="row">
+              {Object.keys(this.state.variantArrayDetails).map((e) => {
+                if (
+                  typeof this.state.variantArrayDetails[e] !== "string" &&
+                  typeof this.state.variantArrayDetails[e] !== "number" &&
+                  typeof this.state.variantArrayDetails[e] !== "undefined"
+                ) {
+                  return null;
+                }
+                return (
+                  <div className="col-12 col-sm-6 mb-4">
+                    {e === "main_image" ? (
+                      <React.Fragment>
+                        <b>{e}</b>:<br />
+                        <Thumbnail
+                          source={this.state.variantArrayDetails[e]}
+                          alt={""}
+                        />
+                      </React.Fragment>
+                    ) : (
+                      <React.Fragment>
+                        <b>{e}</b>:<br />
+                        {this.state.variantArrayDetails[e]}
+                      </React.Fragment>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </Modal.Section>
+        </Modal>
 
                 <div className="productupdatebtncls">
                   <Button onClick={this.handlecancelback}>Cancel</Button>
