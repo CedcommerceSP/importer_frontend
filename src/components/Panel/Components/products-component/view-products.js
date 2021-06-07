@@ -17,6 +17,7 @@ import {
   Popover,
   ActionList,
 } from "@shopify/polaris";
+import { RiDeleteBin5Line } from "react-icons/ri";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import { isUndefined } from "util";
@@ -295,12 +296,13 @@ class ViewProducts extends Component {
             />
             <span className="editicnclsbtn" />
           </span> */}
-          <span
+          <div
             onClick={this.handledatadeletemodalconfrim.bind(this, variant[e])}
+            className="showtext_support"
           >
-            <i class="fa fa-trash fa-2x deleteiconbtn" />
-            <span className="deletebtniconplus" />
-          </span>
+            <RiDeleteBin5Line size="25px" color="#dc3545" style={{cursor:"pointer"}} />
+            <div>Delete</div>
+          </div>
         </div>,
       ]);
     });
