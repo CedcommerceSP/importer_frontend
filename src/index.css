@@ -552,6 +552,7 @@ h2 {
 
     margin: 1% 0%;
 }
+
 .showhtml_editorbtn{
     position: relative;
     margin-left: 71%;
@@ -595,3 +596,47 @@ h2 {
 #tetimg23 {
     margin: 0px;
 }
+@media only screen and (max-width: 600px) {
+    .showhtml_editorbtn{
+        position: relative;
+        margin-left: 0%;
+        text-align: left;
+
+        }
+        .displaytextclsbutton{
+            display: block;
+        }
+        .checkflexclsinputfield {
+            display: block;
+            width: 100%;
+        }
+        .allproductlabelcsstitle{
+            width: 100%;
+            margin: 0% 0%;
+        }
+        .allproductlabelcsstype{
+            width: 100%;
+        }
+    }
+    @media only screen and (max-width: 320px) {
+        .showhtml_editorbtn{
+            position: relative;
+            margin-left: 0%;
+            text-align: left;
+            }
+            .displaytextclsbutton{
+                display: block;
+            }
+            .checkflexclsinputfield {
+                display: block;
+                width: 100%;
+            }
+            .allproductlabelcsstitle{
+                width: 100%;
+            margin: 0% 0%;
+
+            }
+            .allproductlabelcsstype{
+                width: 100%;
+            }
+        }
