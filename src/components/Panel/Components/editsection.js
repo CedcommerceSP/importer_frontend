@@ -490,7 +490,7 @@ export class Editsection extends Component {
                                                         <div>Show HTML</div>
                                                     </div>
                                                 </div>
-                                                <Card>
+                                                <Card title="Edit Description" sectioned>
                                                     <textarea
                                                         id="texttareaiddescription"
                                                         className="descriptiontextarea"
