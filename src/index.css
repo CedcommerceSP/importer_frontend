@@ -473,6 +473,9 @@ h2 {
     visibility: visible;
     opacity: 1;
 }
+.Polaris-Header-Title h1{
+    padding: 0% 0%;
+}
 .product_edittext div{
     position: absolute;
     opacity: 0;
@@ -563,8 +566,13 @@ h2 {
     display: flex;
     margin: 2% 0%;
 }
+.displaytextclsbutton p{
+    padding: 0% 0%;
+
+}
 .displaytextcls p{
     font-size: 26px;
+    padding: 0% 0%;
 }
 
 #testimagesection {
