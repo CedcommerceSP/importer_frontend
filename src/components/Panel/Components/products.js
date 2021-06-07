@@ -806,8 +806,10 @@ export class Products extends Component {
                 data[i]["details"]["source_product_id"]
               )}
               style={{ cursor: "pointer" }}
+              className="product_edittext"
             >
               <BiEdit size="26px"  color="#5563c1" />
+              <div>Edit</div>
             </span>
             </div>
             <div className="iconmarginclass">
@@ -817,8 +819,10 @@ export class Products extends Component {
                 data[i]["details"]["source_product_id"]
               )}
               style={{ cursor: "pointer","font-size": "25px"}}
+              className="product_deletetext"
             >
              <RiDeleteBin5Line size="25px" color="#dc3545"  />
+             <div>Delete</div>
             </span>
             </div>
           </div>
