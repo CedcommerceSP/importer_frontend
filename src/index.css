@@ -409,7 +409,7 @@ h2 {
 }
 
 .allproductlabelcsstype {
-    width: 48%;
+    width: 47%;
 }
 .iconlinktoebayproduct{
     float: left;
@@ -433,29 +433,88 @@ h2 {
     display: flex;
     flex-direction: row-reverse;
     margin-top: 3%;
+    margin-left: 81%;
 }
 
 .marginpaddingcancelbtn {
-    margin-right: 1%;
+    margin-right: 3%;
 }
 
 .allproductlabelcsstitle {
-    width: 48%;
-    margin-right: 4%;
+    width: 47%;
+    margin: 0% 2%;
+}
+.showtext_support{
+    position: relative;
+    display: block;
+}
+.showtext_support div{
+    position: absolute;
+    opacity: 0;
+    background: rgb(255, 254, 254);
+    color: rgb(240, 45, 45);
+    /* margin-bottom: 5px; */
+    width: 100px;
+    border-radius: 15% 15%;
+    font-weight: 600;
+    padding: 2px 2px;
+    visibility: hidden;
+    -webkit-transition: visibility 0s, opacity 0.5s linear; 
+    transition: visibility 0s, opacity 0.5s linear;
+}
+.showtext_support:hover div{
+    visibility: visible;
+    opacity: 1; 
 }
 
 .checkflexclsinputfield {
     display: flex;
     width: 100%;
     padding: 2% 0%;
+    margin-bottom: 3% ;
 }
-
+.showhtml_editorbtn div{
+    position: absolute;
+    opacity: 0;
+    background: rgb(255, 254, 254);
+    color: rgb(63, 79, 230);
+    width: 100px;
+    border-radius: 15% 15%;
+    font-weight: 600;
+    padding: 2px 2px;
+    visibility: hidden;
+  -webkit-transition: visibility 0s, opacity 0.5s linear; 
+ transition: visibility 0s, opacity 0.5s linear;
+}
+.showhtml_editorbtn:hover{
+    cursor: pointer;
+}
+.showhtml_editorbtn:hover div{
+    visibility: visible;
+    opacity: 1; 
+    z-index: 200;
+    transition: 3s;
+    
+}
 #textareaidineditsection {
     padding: 2% 0%;
 }
 
 .displaytextcls {
+    display: flex;
+
     margin: 1% 0%;
+}
+.showhtml_editorbtn{
+    position: relative;
+    margin-left: 71%;
+}
+#checitmargin{
+    margin: 3% 0%;
+}
+.displaytextclsbutton{
+    display: flex;
+    margin: 2% 0%;
 }
 .displaytextcls p{
     font-size: 26px;
