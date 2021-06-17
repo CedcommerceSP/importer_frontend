@@ -233,10 +233,18 @@ class EbayAffiliate extends Component {
         requests
             .postRequest('ebayaffiliate/request/importProduct', sendData)
             .then(data => {
+                console.log(data);
                if ( data.success ) {
                     notify.success(data.message);
                     if ( data.code && data.code == 'move_to_activity_section' ) {
                         this.props.redirect('/panel/queuedtasks')
+                    }
+                    else{
+setTimeout(()=>{
+    this.redirect('/panel/products');
+},3000)
+
+                       
                     }
                } else {
                     notify.error(data.message);

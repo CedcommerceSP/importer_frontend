@@ -249,7 +249,7 @@ export class Products extends Component {
       this.setState({ currentproduct_id: data });
       confirmAlert({
         title: "Confirm to Delete This Product ",
-        message: "Are you sure to delete this product ",
+        message: "Are you sure to delete this product",
         buttons: [
           {
             label: "Yes",
@@ -264,18 +264,24 @@ export class Products extends Component {
     }
   };
   handleDeletedata() {
+
     let input = {
       source_product_id: this.state.currentproduct_id,
-      UserID: this.state.merchant_id,
+      merchant_id: this.state.merchant_id,
     };
 
     requests
-      .postRequest("frontend/test/updateVariantsOfScrapping", input)
+      .postRequest("frontend/test/deleteproductAlldata", input)
       .then((response1) => {
-        console.log(response1);
+        // console.log(response1);
+        if(response1.success){
+          notify.success("Product Delete Successfully");
+          this.getProducts();
+        } 
       });
   }
   prepareHeader = (props) => {
+    // console.log(props);
     if (
       !isUndefined(this.props.location) &&
       !isUndefined(this.props.location.state) &&
@@ -287,8 +293,7 @@ export class Products extends Component {
       props.necessaryInfo.account_connected.length > 0
     ) {
       let installedApps = [];
-      this.setState({ merchant_id: props.necessaryInfo.credits.merchant_id });
-      console.log( props.necessaryInfo.account_connected);
+      // console.log( props.necessaryInfo.account_connected);
       props.necessaryInfo.account_connected.forEach((e) => {
 
         if (e.code !== "fba") {
@@ -320,6 +325,8 @@ export class Products extends Component {
         installedApps: installedApps,
         requiredParamNotRecieved: false,
       });
+      this.setState({ merchant_id: props.necessaryInfo.credits.merchant_id });
+
     }
 
     setTimeout(() => {
@@ -328,7 +335,7 @@ export class Products extends Component {
   };
 
   handleSelectedUpload = (arg, val) => {
-    console.log(this.state.selectedProducts);
+    // console.log(this.state.selectedProducts);
     switch (arg) {
       case "modalClose":
         this.setState({ selectedUploadModal: false });
@@ -806,8 +813,10 @@ export class Products extends Component {
                 data[i]["details"]["source_product_id"]
               )}
               style={{ cursor: "pointer" }}
+              className="product_edittext"
             >
               <BiEdit size="26px"  color="#5563c1" />
+              <div>Edit</div>
             </span>
             </div>
             <div className="iconmarginclass">
@@ -817,8 +826,10 @@ export class Products extends Component {
                 data[i]["details"]["source_product_id"]
               )}
               style={{ cursor: "pointer","font-size": "25px"}}
+              className="product_deletetext"
             >
              <RiDeleteBin5Line size="25px" color="#dc3545"  />
+             <div>Delete</div>
             </span>
             </div>
           </div>

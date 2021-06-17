@@ -17,6 +17,7 @@ import {
   Popover,
   ActionList,
 } from "@shopify/polaris";
+import { RiDeleteBin5Line } from "react-icons/ri";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import { isUndefined } from "util";
@@ -82,6 +83,7 @@ class ViewProducts extends Component {
       rows: [],
     };
     this.openlistproductlist = this.openlistproductlist.bind(this);
+    // this.handledatadeletemodal=this.handledatadeletemodal.bind(this);
     this.getSingleProductData();
   }
 
@@ -109,20 +111,26 @@ class ViewProducts extends Component {
       listproductuploadsactive: !this.state.listproductuploadsactive,
     });
   }
-  handledatadeletemodal() {
+  handledatadeletemodal(row) {
     let input = {
       source_product_id: this.state.id,
-      source_variant_id: this.state.currentrow["source_variant_id"],
-      UserID: this.props.location.state.parent_props.merchant_id,
+      data:row,
+      merchant_id: this.props.location.state.parent_props.merchant_id,
     };
     requests
-      .postRequest("frontend/test/updateVariantsOfScrapping", input)
+      .postRequest("frontend/test/deleteproductVarintsdata", input)
       .then((response1) => {
-        console.log(response1);
+        if (response1.success) {
+          notify.success("Successfully delete variant data");
+  ` `
+              this.redirect("/panel/products");
+          
+      } else {
+          notify.error("Something went wrong");
+      }
       });
   }
   handledatadeletemodalconfrim = (row) => {
-    // console.log(row);
     this.setState({ currentrow: row });
     confirmAlert({
       title: "Confirm to Delete This Product ",
@@ -130,7 +138,7 @@ class ViewProducts extends Component {
       buttons: [
         {
           label: "Yes",
-          onClick: this.handledatadeletemodal,
+          onClick: this.handledatadeletemodal.bind(this,row),
         },
         {
           label: "No",
@@ -185,6 +193,7 @@ class ViewProducts extends Component {
             typeof data.data["variants"] === "object"
           ) {
             let variant = data.data["variants"];
+            console.log(variant);
             temp.variants = [];
             Object.keys(variant).forEach((e) => {
               if (!isUndefined(variant[e])) {
@@ -222,7 +231,6 @@ class ViewProducts extends Component {
   };
 
   handleTableChange = (variant) => {
-    // console.log(variant)
     let rows = [];
     Object.keys(variant).forEach((e) => {
       rows.push([
@@ -295,12 +303,13 @@ class ViewProducts extends Component {
             />
             <span className="editicnclsbtn" />
           </span> */}
-          <span
+          <div
             onClick={this.handledatadeletemodalconfrim.bind(this, variant[e])}
+            className="showtext_support"
           >
-            <i class="fa fa-trash fa-2x deleteiconbtn" />
-            <span className="deletebtniconplus" />
-          </span>
+            <RiDeleteBin5Line size="25px" color="#dc3545" style={{cursor:"pointer"}} />
+            <div>Delete</div>
+          </div>
         </div>,
       ]);
     });
@@ -539,7 +548,7 @@ class ViewProducts extends Component {
                           ) {
                             // console.log(e)
                             // console.log(i)
-                            console.log(this.state.img[0][0]);
+                            {/* console.log(this.state.img[0][0]); */}
                             return (
                               <div
                                 key={i}

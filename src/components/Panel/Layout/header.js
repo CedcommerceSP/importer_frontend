@@ -30,6 +30,7 @@ export class Header extends Component {
     }
 
     setActiveTab(props) {
+        // console.log(props);
         const activeUrl = props.history.location.pathname;
         if (activeUrl.indexOf('/auth') === -1) {
             for (let i = 0; i < this.state.menu.length; i++) {

@@ -357,6 +357,7 @@ export class Panel extends Component {
     menu = panelFunctions.getMenu();
 
     checkingFba() {
+        // console.log(this.menu);
         if (this.state.necessaryInfo.account_connected_array) {
             // console.log(this.state.necessaryInfo.account_connected_array);
             let flag = false;
@@ -383,7 +384,7 @@ export class Panel extends Component {
                 .getRequest("fba/test/getWebhookCall")
                 .then(data => {
                     if (data.success) {
-                        console.log(data.days);
+                        // console.log(data.days);
                         this.setState({
                             trail_days_left: 3 - data.days
                         })
@@ -402,8 +403,7 @@ export class Panel extends Component {
                 .getRequest("fba/test/getWebhookDetailsAndDelete")
                 .then(data => {
                     if (data.success) {
-                        console
-                            .log(data)
+                        // console.log(data)
                         if (data.message == "webhook are deleted") {
                             this.setState({
                                 show_trail_banner_webhook: true

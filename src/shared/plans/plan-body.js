@@ -2029,19 +2029,20 @@ class PlanBody extends Component {
         var tabs = []
         // console.log(this.state.is_connected_fba);
         if (this.state.is_connected_fba){
-             tabs = [
-                {
-                    id: 'product-import',
-                    content: 'Product Upload Charges',
-                    accessibilityLabel: 'Product Upload Charges',
-                    panelID: 'product-import-charges',
-                },
+             tabs = [ 
                 {
                     id: 'sync-plan',
                     content: 'Price/Inventory Syncing Plan',
                     accessibilityLabel: 'Price/Inventory Syncing Plan',
                     panelID: 'product-sync-plan',
                 },
+                 {
+                id: 'product-import',
+                content: 'Product Upload Charges',
+                accessibilityLabel: 'Product Upload Charges',
+                panelID: 'product-import-charges',
+            },
+                
                 {
                     id: 'order_management',
                     content: 'FBA Order Management',
@@ -2061,17 +2062,18 @@ class PlanBody extends Component {
         }
         else {
              tabs = [
-                {
-                    id: 'product-import',
-                    content: 'Product Import Charges',
-                    accessibilityLabel: 'Product Import Charges',
-                    panelID: 'product-import-charges',
-                },
+               
                 {
                     id: 'sync-plan',
                     content: 'Price/Inventory Syncing Plan',
                     accessibilityLabel: 'Price/Inventory Syncing Plan',
                     panelID: 'product-sync-plan',
+                },
+                {
+                    id: 'product-import',
+                    content: 'Product Upload Charges',
+                    accessibilityLabel: 'Product Upload Charges',
+                    panelID: 'product-import-charges',
                 },
                 /*{
                  id: 'cvs_management',
@@ -2101,7 +2103,8 @@ class PlanBody extends Component {
                         <Card>
                             <Tabs tabs={tabs} selected={selected} onSelect={this.handleTabChange}/>
                             <Card.Section>
-                                {selected === 0 ? this.renderPlanProductSync() : selected === 1 ? this.renderPlanProductSyncWithUploadCount() : selected === 2 ? this.renderPlanOrderManagement():this.renderComboPlan()}
+                            
+                                {selected === 0 ?this.renderPlanProductSyncWithUploadCount() : selected === 1 ? this.renderPlanProductSync()  : selected === 2 ? this.renderPlanOrderManagement():this.renderComboPlan()}
                             </Card.Section>
                         </Card>
                     </div>

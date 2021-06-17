@@ -590,6 +590,7 @@ export class Import extends Component {
         requests.getRequest("connector/product/import", sendData).then(data => {
             this.state.showImportProducts = false;
             this.updateState();
+            // console.log(data);
             if (data.success === true) {
                 if (
                     data.code === "product_import_started" ||
